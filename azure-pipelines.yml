@@ -45,5 +45,5 @@ stages:
         location: 'South India'
         templateLocation: 'URL of the file'
         csmFileLink: 'https://github.com/citrix/citrix-adc-azure-templates/tree/master/templates/high_availability/availability_zone/public_vip/3nic_backend_autoscale'
-        overrideParameters: '–adminUsername $(vmusername) -adminPassword $(vmpwd)'
+        overrideParameters: '–adminUsername "nsroot" -adminPassword "nsroot@12345"'
         deploymentMode: 'Incremental'
