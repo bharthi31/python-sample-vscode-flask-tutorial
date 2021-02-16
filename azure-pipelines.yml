@@ -42,6 +42,6 @@ stages:
         resourceGroupName: 'myVMSSResourceGroup'
         location: 'South India'
         templateLocation: 'URL of the file'
-        csmFileLink: 'https://github.com/citrix/citrix-adc-azure-templates/tree/master/templates/high_availability/availability_zone/public_vip/3nic_backend_autoscale'
+        csmFileLink: 'https://github.com/citrix/citrix-adc-azure-templates/blob/master/templates/high_availability/availability_set/private_vip/1nic/mainTemplate.json'
         overrideParameters: –adminUsername 'nsroot' -adminPassword 'nsroot@12345'
         deploymentMode: 'Incremental'
