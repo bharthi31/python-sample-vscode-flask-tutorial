@@ -15,8 +15,6 @@ variables:
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
-  vmusername: 'nsroot'
-  vmpwd: 'nsroot'
 
   # Environment name
   environmentName: 'test'
