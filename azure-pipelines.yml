@@ -33,17 +33,6 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-     - task: AzureResourceManagerTemplateDeployment@3
-      inputs:
-        deploymentScope: 'Resource Group'
-        azureResourceManagerConnection: 'flaskServiceConnection'
-        subscriptionId: 'e7d5fe66-6c5e-4ab5-9b95-6bae15dd7e03'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'myVMSSResourceGroup'
-        location: 'South India'
-        templateLocation: 'URL of the file'
-        csmFileLink: 'https://github.com/citrix/citrix-adc-azure-templates/blob/master/templates/high_availability/availability_set/public_vip/1nic/mainTemplate.json'
-        deploymentMode: 'Incremental'
     
     - task: UsePythonVersion@0
       inputs:
@@ -58,7 +47,17 @@ stages:
         pip install -r requirements.txt
       workingDirectory: $(projectRoot)
       displayName: "Install requirements"
-   
+    - task: AzureResourceManagerTemplateDeployment@3
+      inputs:
+        deploymentScope: 'Resource Group'
+        azureResourceManagerConnection: 'flaskServiceConnection'
+        subscriptionId: 'e7d5fe66-6c5e-4ab5-9b95-6bae15dd7e03'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'myVMSSResourceGroup'
+        location: 'South India'
+        templateLocation: 'URL of the file'
+        csmFileLink: 'https://github.com/citrix/citrix-adc-azure-templates/blob/master/templates/high_availability/availability_set/public_vip/1nic/mainTemplate.json'
+        deploymentMode: 'Incremental'
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
