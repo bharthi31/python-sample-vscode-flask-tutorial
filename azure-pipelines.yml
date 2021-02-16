@@ -56,7 +56,7 @@ stages:
         resourceGroupName: 'myVMSSResourceGroup'
         location: 'South India'
         templateLocation: 'URL of the file'
-        csmFileLink: 'https://github.com/citrix/citrix-adc-azure-templates/blob/master/templates/high_availability/availability_set/public_vip/1nic/mainTemplate.json'
+        csmFileLink: 'https://github.com/citrix/citrix-adc-azure-templates/tree/master/templates/high_availability/availability_zone/public_vip/3nic_backend_autoscale'
         deploymentMode: 'Incremental'
     - task: ArchiveFiles@2
       displayName: 'Archive files'
