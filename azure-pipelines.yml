@@ -36,10 +36,13 @@ stages:
     steps:
     - task: AzureResourceManagerTemplateDeployment@3
       inputs:
-        deploymentScope: 'Subscription'
-        azureResourceManagerConnection: 'Free Trial(e7d5fe66-6c5e-4ab5-9b95-6bae15dd7e03)'
-        subscriptionId: 'e7d5fe66-6c5e-4ab5-9b95-6bae15dd7e03'
+        deploymentScope: 'Resource Group'
+        azureResourceManagerConnection: 'NSDev GWY CA raghul.christus@citrix.com'
+        subscriptionId: '23b03d6f-b164-4527-9acd-595d97060283'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'bharathi-cn-dep'
         location: 'East US 2'
-        templateLocation: 'Linked artifact'
-        csmFile: 'Microsoft.Template-20210217125712'
+        templateLocation: 'URL of the file'
+        csmFileLink: 'https://github.com/citrix/citrix-adc-azure-templates/blob/master/templates/high_availability/availability_set/public_vip/1nic/mainTemplate.json'
+        overrideParameters: '-adminUsername nsroot -adminPassword nsroot@123'
         deploymentMode: 'Incremental'
