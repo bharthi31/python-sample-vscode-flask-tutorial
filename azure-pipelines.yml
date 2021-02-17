@@ -1,4 +1,5 @@
 # Python to Linux Web App on Azure
+
 # Build your Python project and deploy it to Azure as a Linux Web App.
 # Change python version to one thats appropriate for your application.
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
@@ -35,13 +36,10 @@ stages:
     steps:
     - task: AzureResourceManagerTemplateDeployment@3
       inputs:
-        deploymentScope: 'Resource Group'
-        azureResourceManagerConnection: 'flaskServiceConnection'
+        deploymentScope: 'Subscription'
+        azureResourceManagerConnection: 'Free Trial(e7d5fe66-6c5e-4ab5-9b95-6bae15dd7e03)'
         subscriptionId: 'e7d5fe66-6c5e-4ab5-9b95-6bae15dd7e03'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'myVMSSResourceGroup'
-        location: 'South India'
-        templateLocation: 'URL of the file'
-        csmFileLink: 'https://github.com/citrix/citrix-adc-azure-templates/blob/master/templates/high_availability/availability_set/public_vip/1nic/mainTemplate.json'
-        overrideParameters: –adminUsername 'nsroot' -adminPassword 'nsroot@12345'
+        location: 'East US 2'
+        templateLocation: 'Linked artifact'
+        csmFile: 'Microsoft.Template-20210217125712'
         deploymentMode: 'Incremental'
