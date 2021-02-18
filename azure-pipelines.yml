@@ -43,6 +43,6 @@ stages:
         resourceGroupName: 'bharathi-cn-dep'
         location: 'East US 2'
         templateLocation: 'URL of the file'
-        csmFileLink: 'https://raw.githubusercontent.com/bharthi31/citrix-adc-azure-templates/master/templates/high_availability/availability_zone/public_vip/3nic/mainTemplate.json'
+        csmFileLink: 'https://raw.githubusercontent.com/citrix/citrix-adc-azure-templates/master/templates/high_availability/availability_set/public_vip/1nic/mainTemplate.json'
         overrideParameters: '-adminUsername nsroot -adminPassword nsroot@123'
         deploymentMode: 'Incremental'
