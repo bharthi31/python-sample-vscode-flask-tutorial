@@ -20,7 +20,6 @@ steps:
     python -m pip install --upgrade pip
     pip install setup
     pip install -r requirements.txt
-  workingDirectory: $(projectRoot)
   displayName: "Install requirements"
 - task: ArchiveFiles@2
   inputs:
