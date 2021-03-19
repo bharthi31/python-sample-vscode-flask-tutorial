@@ -6,3 +6,9 @@ variable "traffic_split_percentage" {
   description = "Percentage of Traffic to be split"
   type        = number
 }
+variable "username" {
+  type        = string
+}
+variable "password" {
+  type        = string
+}
