@@ -29,7 +29,7 @@ resource "citrixadc_cspolicy" "blue_cspolicy" {
   csvserver       = citrixadc_csvserver.demo_csvserver.name
   targetlbvserver = citrixadc_lbvserver.blueLB.name
   policyname      = "blue_policy"
-  rule            = "sys.random.mul(100).lt(var.traffic_split_percentage)"
+  rule            = format("sys.random.mul(100).lt(%s)", var.traffic_split_percentage)
   priority        = 100
 
   # Any change in the following id set will force recreation of the cs policy
