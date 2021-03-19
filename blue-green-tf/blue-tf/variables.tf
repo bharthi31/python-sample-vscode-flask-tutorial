@@ -1,4 +1,4 @@
-variable "backend_services" {
-  description = "The list of backend services (ip address:port list)"
-  type        = list(string)
+variable "backend_service" {
+  description = "The backend service IP"
+  type        = string
 }
