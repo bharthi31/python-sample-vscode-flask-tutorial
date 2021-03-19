@@ -1,3 +1,3 @@
 provider "citrixadc" {
-  endpoint = "http://52.250.108.159
+  endpoint = "http://52.250.108.159"
 }
