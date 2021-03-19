@@ -18,7 +18,7 @@ resource "citrixadc_lbvserver" "greenLB" {
 resource "citrixadc_service" "green_service" {
     lbvserver = citrixadc_lbvserver.greenLB.name
     name = "green_service"
-    ip = "172.16.5.5"
+    ip = var.backend_service
     servicetype  = "HTTP"
     port = 80
 }
@@ -27,7 +27,7 @@ resource "citrixadc_cspolicy" "green_cspolicy" {
   csvserver       = citrixadc_csvserver.demo_csvserver.name
   targetlbvserver = citrixadc_lbvserver.greenLB.name
   policyname      = "green_policy"
-  rule            = "sys.random.mul(100).lt(40)"
+  rule            = "sys.random.mul(100).lt(var.traffic_split_percentage)"
   priority        = 101
 
   # Any change in the following id set will force recreation of the cs policy
