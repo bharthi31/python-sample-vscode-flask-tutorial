@@ -28,6 +28,7 @@ resource "citrixadc_cspolicy" "green_cspolicy" {
   targetlbvserver = citrixadc_lbvserver.greenLB.name
   policyname      = "green_policy"
   rule            = format("sys.random.mul(100).lt(%s)", var.traffic_split_percentage)
+  priority        = 101
 
   # Any change in the following id set will force recreation of the cs policy
   forcenew_id_set = [
