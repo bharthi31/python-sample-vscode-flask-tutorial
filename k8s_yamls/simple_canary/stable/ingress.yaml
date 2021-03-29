@@ -4,6 +4,7 @@ metadata:
   name: guestbook
   annotations:
     kubernetes.io/ingress.class: "citrix"
+    ingress.citrix.com/frontend-ip: 172.18.0.5
 spec:
   rules:
   - host:  demo.webapp.com
