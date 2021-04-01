@@ -36,7 +36,7 @@ resource "citrixadc_cspolicy" "blue_cspolicy" {
   policyname      = "blue_policy"
   action          = citrixadc_csaction.blue_csaction.name
   rule            = "HTTP.REQ.HOSTNAME.SERVER.EQ(\"demo-bg.webapp.com\") && HTTP.REQ.URL.PATH.SET_TEXT_MODE(IGNORECASE).STARTSWITH(\"/\")"
-  priority        = 100
+  priority        = 101
 
   # Any change in the following id set will force recreation of the cs policy
   forcenew_id_set = [
