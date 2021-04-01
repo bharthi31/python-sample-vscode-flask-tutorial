@@ -27,7 +27,7 @@ resource "citrixadc_cspolicy" "green_cspolicy" {
   csvserver       = citrixadc_csvserver.demo_csvserver.name
   targetlbvserver = citrixadc_lbvserver.greenLB.name
   policyname      = "green_policy"
-  rule            = format("sys.random.mul(100).lt(%s)", var.traffic_split_percentage)
+  rule            = format("HTTP.REQ.HOSTNAME.SERVER.EQ(\"demo-bg.webapp.com\") && HTTP.REQ.URL.PATH.SET_TEXT_MODE(IGNORECASE).STARTSWITH(\"/\") && sys.random.mul(100).lt(%s)", var.traffic_split_percentage)
   priority        = 101
 
   # Any change in the following id set will force recreation of the cs policy
