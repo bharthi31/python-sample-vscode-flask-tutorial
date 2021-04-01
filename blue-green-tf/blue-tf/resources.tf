@@ -24,11 +24,17 @@ resource "citrixadc_service" "blue_service" {
 
 }
 
+resource "citrixadc_csaction" "blue_csaction" {
+  name            = "blue_csaction"
+  targetlbvserver = citrixadc_lbvserver.blueLB.name
+}
+
 #policy to based on that target lbvserver
 resource "citrixadc_cspolicy" "blue_cspolicy" {
   csvserver       = citrixadc_csvserver.demo_csvserver.name
   targetlbvserver = citrixadc_lbvserver.blueLB.name
   policyname      = "blue_policy"
+  action          = citrixadc_csaction.blue_csaction.name
   rule            = "HTTP.REQ.HOSTNAME.SERVER.EQ(\"demo-bg.webapp.com\") && HTTP.REQ.URL.PATH.SET_TEXT_MODE(IGNORECASE).STARTSWITH(\"/\")"
   priority        = 100
 
