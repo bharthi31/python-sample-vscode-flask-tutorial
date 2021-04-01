@@ -5,7 +5,7 @@ resource "citrixadc_csvserver" "demo_csvserver" {
   port        = 80
   servicetype = "HTTP"
 
-  lbvserverbinding = citrixadc_lbvserver.blueLB.name
+  # lbvserverbinding = citrixadc_lbvserver.blueLB.name
 }
 
 resource "citrixadc_lbvserver" "blueLB" {
@@ -32,7 +32,7 @@ resource "citrixadc_csaction" "blue_csaction" {
 #policy to based on that target lbvserver
 resource "citrixadc_cspolicy" "blue_cspolicy" {
   csvserver       = citrixadc_csvserver.demo_csvserver.name
-  targetlbvserver = citrixadc_lbvserver.blueLB.name
+  # targetlbvserver = citrixadc_lbvserver.blueLB.name
   policyname      = "blue_policy"
   action          = citrixadc_csaction.blue_csaction.name
   rule            = "HTTP.REQ.HOSTNAME.SERVER.EQ(\"demo-bg.webapp.com\") && HTTP.REQ.URL.PATH.SET_TEXT_MODE(IGNORECASE).STARTSWITH(\"/\")"
