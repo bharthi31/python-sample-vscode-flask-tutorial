@@ -9,9 +9,9 @@ trigger:
 
 resources:
   repositories:
-  - repository: bharthi31
-    type: github
-    name: python-sample-vscode-flask-tutorial/azure-pipelines
+  - repository: self
+    type: git
+    ref: master
 
 pool: bharathi-bg-agpool
 
