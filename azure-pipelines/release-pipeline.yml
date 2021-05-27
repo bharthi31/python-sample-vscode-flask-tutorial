@@ -1,8 +1,8 @@
 # Explicitly set none for repositry trigger
 trigger:
-branches:
-    include:
-    - master
+    branches:
+        include:
+        - master
 
 resources:
   pipelines:
