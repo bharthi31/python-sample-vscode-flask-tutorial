@@ -1,6 +1,8 @@
 # Explicitly set none for repositry trigger
 trigger:
-- none
+branches:
+    include:
+    - master
 
 resources:
   pipelines:
@@ -31,4 +33,4 @@ jobs:
             destinationFolder: '$(agent.builddirectory)'
             cleanDestinationFolder: false
         - script: |  
-            cat $(agent.builddirectory)/greatcode.txt
+            cat $(agent.builddirectory)/azure-pipelines/greatcode.txt
