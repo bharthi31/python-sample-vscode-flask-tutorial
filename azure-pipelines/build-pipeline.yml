@@ -1,11 +1,5 @@
 trigger:
-  branches:
-    include:
-    - master
-  paths:
-    exclude:
-    - build-pipeline.yml
-    - release-pipeline.yml
+  None
 
 variables:
   vmImageName: 'ubuntu-latest'
