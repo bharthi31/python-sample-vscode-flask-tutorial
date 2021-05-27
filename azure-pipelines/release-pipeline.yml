@@ -33,7 +33,7 @@ jobs:
             export TRAFFIC_SPLIT_PERCENTAGE=`expr $traffic_split_per`
             echo "##vso[task.setvariable variable=TRAFFIC_SPLIT_PERCENTAGE;]$TRAFFIC_SPLIT_PERCENTAGE"
           displayName: 'Configure Backend Service IP'
-        - task: TerraformInstaller@0
+        - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
           inputs:
             terraformVersion: '0.13.5'
         - task: TerraformCLI@0
