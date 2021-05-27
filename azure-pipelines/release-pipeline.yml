@@ -1,8 +1,8 @@
 # Explicitly set none for repositry trigger
 trigger:
-    branches:
-        include:
-        - master
+  branches:
+    include:
+      - master
 
 resources:
   pipelines:
@@ -27,6 +27,18 @@ jobs:
         steps:          
         - download: myappbuild
           artifact: drop  
+        - bash: |
+            export VM_IP="`hostname -i`"
+            echo $VM_IP
+            echo "##vso[task.setvariable variable=SERVICE_IP;]$VM_IP"
+            cat $(System.DefaultWorkingDirectory)/_bharthi31_python-sample-vscode-flask-tutorial/blue-green-tf/green-tf/configs.txt
+            traffic_split_per=`cat $(System.DefaultWorkingDirectory)/_bharthi31_python-sample-vscode-flask-tutorial/blue-green-tf/green-tf/configs.txt`
+            export TRAFFIC_SPLIT_PERCENTAGE=`expr $traffic_split_per`
+            echo "##vso[task.setvariable variable=TRAFFIC_SPLIT_PERCENTAGE;]$TRAFFIC_SPLIT_PERCENTAGE"
+            displayName: 'Configure Backend Service IP'
+        - task: TerraformInstaller@0
+          inputs:
+            terraformVersion: '0.13.5'
         - task: ExtractFiles@1
           inputs:
             archiveFilePatterns: '$(PIPELINE.WORKSPACE)/myappbuild/drop/$(resources.pipeline.myappbuild.runID).zip'
