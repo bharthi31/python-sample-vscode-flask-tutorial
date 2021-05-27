@@ -12,6 +12,7 @@ resources:
   - repository: self
     type: git
     ref: master
+    endpoint: python-sample-vscode-flask-tutorial/blue-green-tf/
 
 pool: bharathi-bg-agpool
 
