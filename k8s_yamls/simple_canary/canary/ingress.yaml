@@ -4,7 +4,7 @@ metadata:
   name: canary-by-weight
   annotations:
     kubernetes.io/ingress.class: "citrix"
-    ingress.citrix.com/frontend-ip: 172.18.0.5
+    ingress.citrix.com/frontend-ip: 20.0.0.5
     ingress.citrix.com/canary-weight: "20"
 spec:
   rules:
