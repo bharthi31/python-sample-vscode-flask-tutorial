@@ -11,16 +11,12 @@ pool: bharathi-bg-agpool
 
 stages:
 - stage:
-  jobs:  
+  jobs:
   - job: Build
+    displayName: Green Deployment
+    #environment: dev
     pool: bharathi-bg-agpool
     steps:
-    - script: | 
-        echo 'do some unit test'
-      displayName: 'unit test'
-    - script: | 
-        echo 'compile application'
-      displayName: 'compile'
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
@@ -32,13 +28,6 @@ stages:
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: drop
 
-- stage:
-  jobs:
-  - job: Deploy
-    displayName: Green Deployment
-    #environment: dev
-    pool: bharathi-bg-agpool
-    steps:
     - bash: |
         export VM_IP="`hostname -i`"
         echo $VM_IP
