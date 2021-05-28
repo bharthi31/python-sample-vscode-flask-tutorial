@@ -19,7 +19,7 @@ stages:
       displayName: 'Update Pipeline variables'
       inputs:
         scriptPath: '$(System.DefaultWorkingDirectory)/blue-green-tf/green-tf/terraform_input_generator.py'
-        arguments: --config_file '$(System.DefaultWorkingDirectory)/$(CONFIG_FILE_PATH)''
+        arguments: --config_file '$(System.DefaultWorkingDirectory)/blue-green-tf/green-tf/config.json
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
       inputs:
         terraformVersion: '0.13.5'
