@@ -39,8 +39,6 @@ stages:
     #environment: dev
     pool: bharathi-bg-agpool
     steps:
-    - download: myappbuild
-      artifact: drop  
     - task: ExtractFiles@1
       inputs:
         archiveFilePatterns: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
