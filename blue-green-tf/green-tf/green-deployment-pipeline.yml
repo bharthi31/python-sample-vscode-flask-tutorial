@@ -69,4 +69,3 @@ stages:
         commandOptions: '-var "backend_service=$(SERVICE_IP)" -var "username=nsroot" -var "password=nsroot@12345" -var "traffic_split_percentage=$(TRAFFIC_SPLIT_PERCENTAGE)"'
         allowTelemetryCollection: false
       enabled: False
-      
