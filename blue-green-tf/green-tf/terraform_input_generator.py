@@ -6,6 +6,7 @@ import os
 class TerraformInputGenerator(object):
     @staticmethod
     def populate_env(input_params):
+        print(input_params.config_file)
         with open(input_params.config_file) as json_file:
             json_data = json.load(json_file)
             for param, value in json_data.iteritems():
