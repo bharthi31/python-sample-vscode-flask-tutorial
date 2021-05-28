@@ -1,8 +1,8 @@
 {
-  "TRAFFIC_SPLIT_PERCENTAGE": "100",
+  "TRAFFIC_SPLIT_PERCENTAGE": "50",
   "SERVICE_IP": "20.0.0.7",
   "TERRAFORM_SCRIPT_PATH": "blue-green-tf/green-tf",
-  "CONFIG_FILE_PATH": "blue-green-tf/green-tf"
+  "CONFIG_FILE_PATH": "blue-green-tf/green-tf",
   "ADC_USERNAME": "nsroot",
   "ADC_PASSWORD": "nsroot@12345"
 }
