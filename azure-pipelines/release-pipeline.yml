@@ -19,7 +19,7 @@ pool: bharathi-bg-agpool
 jobs:
 - deployment: Deploy
   displayName: Green Deployment
-  # environment: dev
+  environment: dev
   pool: bharathi-bg-agpool
   strategy:
     runOnce:
