@@ -18,11 +18,6 @@ jobs:
     runOnce:
       deploy:
         steps:
-        - task: CopyFiles@2
-          displayName: 'Pull code from Github'
-          inputs:
-            SourceFolder: 'blue-green-tf'
-            TargetFolder: '$(System.DefaultWorkingDirectory)'
         - bash: |
             export VM_IP="`hostname -i`"
             echo $VM_IP
