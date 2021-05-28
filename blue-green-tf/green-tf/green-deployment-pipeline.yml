@@ -5,8 +5,6 @@ trigger:
   paths:
     exclude:
     - green-deployment-pipeline.yml
-    include:
-    - green-tf/
 
 pool: bharathi-bg-agpool
 
