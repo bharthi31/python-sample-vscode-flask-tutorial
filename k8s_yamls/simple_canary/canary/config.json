@@ -1,0 +1,4 @@
+{
+  "TRAFFIC_SPLIT_PERCENTAGE": 30,
+  "VIP": 20.0.0.5
+}
