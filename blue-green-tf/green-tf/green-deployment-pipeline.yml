@@ -19,7 +19,6 @@ stages:
       inputs:
         versionSpec: '3.x'
         addToPath: true
-        architecture: 'x64'
       displayName: 'Using python to update pipeline variables'
     - task: PythonScript@0
       displayName: 'Update Pipeline variables'
