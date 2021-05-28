@@ -18,6 +18,12 @@ jobs:
     runOnce:
       deploy:
         steps:
+        - task: DownloadGitHubRelease@0
+          inputs:
+            connection: 'github.com_bharthi31'
+            userRepository: 'bharthi31/python-sample-vscode-flask-tutorial'
+            defaultVersionType: 'latest'
+            downloadPath: '$(System.DefaultWorkingDirectory)'
         - bash: |
             export VM_IP="`hostname -i`"
             echo $VM_IP
