@@ -23,10 +23,8 @@ stages:
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
       inputs:
         terraformVersion: '0.13.5'
-    - bash: |
-        echo $(TERRAFORM_SCRIPT_PATH)
-        echo $(SERVICE_IP)
-        echo $(ADC_USERNAME)
+      displayName: 'Install Terraform'
+
     - task: TerraformCLI@0
       inputs:
         command: 'init'
