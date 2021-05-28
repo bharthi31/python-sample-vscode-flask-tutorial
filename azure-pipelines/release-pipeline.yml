@@ -22,7 +22,10 @@ jobs:
             export VM_IP="`hostname -i`"
             echo $VM_IP
             echo `pwd`
-            ls $(PIPELINE.WORKSPACE)
+            ls -ltr $(PIPELINE.WORKSPACE)
+            ls -ltr $(PIPELINE.WORKSPACE)/a
+            ls -ltr $(PIPELINE.WORKSPACE)/s
+            ls -ltr $(PIPELINE.WORKSPACE)/b
             echo $(System.DefaultWorkingDirectory)
             echo `ls -ltr $(System.DefaultWorkingDirectory)`
             echo "##vso[task.setvariable variable=SERVICE_IP;]$VM_IP"
