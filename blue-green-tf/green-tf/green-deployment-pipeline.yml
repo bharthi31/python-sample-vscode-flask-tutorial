@@ -27,7 +27,6 @@ stages:
         echo $(TERRAFORM_SCRIPT_PATH)
         echo $(SERVICE_IP)
         echo $(ADC_USERNAME)
-        displayName: 'Configure Backend Service IP'
     - task: TerraformCLI@0
       inputs:
         command: 'init'
