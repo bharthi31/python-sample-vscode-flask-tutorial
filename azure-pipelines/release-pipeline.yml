@@ -39,12 +39,6 @@ stages:
     #environment: dev
     pool: bharathi-bg-agpool
     steps:
-    - task: ExtractFiles@1
-      inputs:
-        archiveFilePatterns: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-        destinationFolder: '$(System.DefaultWorkingDirectory)'
-        cleanDestinationFolder: true
-
     - bash: |
         export VM_IP="`hostname -i`"
         echo $VM_IP
