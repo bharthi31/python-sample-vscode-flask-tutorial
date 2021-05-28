@@ -15,10 +15,6 @@ stages:
     displayName: Green Deployment
     pool: bharathi-bg-agpool
     steps:
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '3.6'
-      displayName: 'Using python to update pipeline variables'
     - task: PythonScript@0
       displayName: 'Update Pipeline variables'
       inputs:
