@@ -11,7 +11,7 @@ class TerraformInputGenerator(object):
             json_data = json.load(json_file)
             for param, value in json_data.iteritems():
                 #os.environ[param] = value
-                print('##vso[task.setvariable variable={};]${}'.format(param, value))
+                print('##vso[task.setvariable variable={}]{}'.format(param, value))
 
             for param in json_data.keys():
                 print("{} = {}".format(param, os.environ.get(param, 'Oops!! Value not set')))
