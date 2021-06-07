@@ -4,10 +4,10 @@ trigger:
     - master
   paths:
     exclude:
-    - green-deployment-pipeline.yml
-    - teardown-pipeline.yml
+    - blue-green-tf/green-tf/green-deployment-pipeline.yml
+    - blue-green-tf/green-tf/teardown-pipeline.yml
     include:
-    - teardown.json
+    - blue-green-tf/green-tf/teardown.json
 
 pool: bharathi-bg-agpool
 
