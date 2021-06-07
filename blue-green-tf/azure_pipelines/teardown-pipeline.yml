@@ -4,10 +4,10 @@ trigger:
     - master
   paths:
     exclude:
-    - blue-green-tf/green-tf/green-deployment-pipeline.yml
-    - blue-green-tf/green-tf/teardown-pipeline.yml
+    - blue-green-tf/azure_pipelines/green-deployment-pipeline.yml
+    - blue-green-tf/azure_pipelines/teardown-pipeline.yml
     include:
-    - blue-green-tf/green-tf/teardown.json
+    - blue-green-tf/azure_pipelines/config/teardown.json
 
 pool: bharathi-bg-agpool
 
@@ -21,8 +21,8 @@ stages:
     - task: PythonScript@0
       displayName: 'Update Pipeline variables for deleting existing config on ADC'
       inputs:
-        scriptPath: '$(System.DefaultWorkingDirectory)/blue-green-tf/green-tf/terraform_destroy_input_generator.py'
-        arguments: --config_file $(System.DefaultWorkingDirectory)/blue-green-tf/green-tf/teardown.json
+        scriptPath: '$(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/read_teardown_config.py'
+        arguments: --config_file $(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/teardown.json
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
       inputs:
         terraformVersion: '0.13.5'
