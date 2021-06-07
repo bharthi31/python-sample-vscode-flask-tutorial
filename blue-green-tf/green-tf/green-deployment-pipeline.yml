@@ -82,5 +82,4 @@ stages:
         environmentServiceName: 'NSDev GWY CA raghul.christus@citrix.com(23b03d6f-b164-4527-9acd-595d97060283)'
         commandOptions: '-var "backend_service=$(TEARDOWN_SERVICE_IP)" -var "username=nsroot" -var "password=nsroot@12345" -var "traffic_split_percentage=$(TEARDOWN_TRAFFIC_SPLIT_PERCENTAGE)"'
         allowTelemetryCollection: false
-      #enabled: True
       condition:  and(succeededOrFailed(), eq(variables['TEARDOWN_FLAG'], true))
