@@ -5,6 +5,7 @@ trigger:
   paths:
     exclude:
     - green-deployment-pipeline.yml
+    - teardown-pipeline.yml
 
 pool: bharathi-bg-agpool
 
