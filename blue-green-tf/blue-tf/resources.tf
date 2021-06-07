@@ -35,7 +35,7 @@ resource "citrixadc_cspolicy" "blue_cspolicy" {
   # targetlbvserver = citrixadc_lbvserver.blueLB.name
   policyname      = "blue_policy"
   action          = citrixadc_csaction.blue_csaction.name
-  rule            = "HTTP.REQ.HOSTNAME.SERVER.EQ(\"demo-bg.webapp.com\") && HTTP.REQ.URL.PATH.SET_TEXT_MODE(IGNORECASE).STARTSWITH(\"/\")"
+  rule            = format("HTTP.REQ.HOSTNAME.SERVER.EQ(\"demo-bg.webapp.com\") && HTTP.REQ.URL.PATH.SET_TEXT_MODE(IGNORECASE).STARTSWITH(\"/\") && sys.random.mul(100).lt(%s)", var.traffic_split_percentage)
   priority        = 101
 
   # Any change in the following id set will force recreation of the cs policy
