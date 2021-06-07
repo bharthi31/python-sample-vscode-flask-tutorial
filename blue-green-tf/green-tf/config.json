@@ -1,5 +1,5 @@
 {
-  "TRAFFIC_SPLIT_PERCENTAGE": "40",
+  "TRAFFIC_SPLIT_PERCENTAGE": "10",
   "SERVICE_IP": "20.0.0.7",
   "TERRAFORM_SCRIPT_PATH": "blue-green-tf/green-tf",
   "ADC_USERNAME": "nsroot",
