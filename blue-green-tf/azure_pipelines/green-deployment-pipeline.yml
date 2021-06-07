@@ -24,10 +24,10 @@ stages:
         scriptPath: '$(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/read_setup_config.py'
         arguments: --config_file '$(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/setup_config.json'
     
-    - task: TerraformInstaller@0
-      displayName: 'Install Terraform'
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+      displayName: 'Install Terraform 0.13.5'
       inputs:
-        terraformVersion: '0.13.5'
+        terraformVersion: 0.13.5
 
     - task: TerraformCLI@0
       inputs:
