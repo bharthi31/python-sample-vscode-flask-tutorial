@@ -4,6 +4,7 @@ trigger:
     - master
   paths:
     exclude:
+    - blue-green-tf
     - canary-pipeline.yaml
     - green-deployment-pipeline.yml
 
