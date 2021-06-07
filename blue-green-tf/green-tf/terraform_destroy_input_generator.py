@@ -7,6 +7,7 @@ class TerraformDestroyInputGenerator(object):
     def populate_env(input_params):
         with open(input_params.config_file) as json_file:
             json_data = json.load(json_file)
+            print("***** {} ****".format(json_data))
             print('##vso[task.setvariable variable=TEARDOWN_FLAG]True')
             for param, value in json_data.iteritems():
                 print('##vso[task.setvariable variable=TEARDOWN_{}]{}'.format(param, value))
