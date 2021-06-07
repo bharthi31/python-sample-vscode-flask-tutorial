@@ -36,7 +36,6 @@ stages:
         backendType: selfConfigured
       displayName: 'terraform init'
       condition:  and(succeededOrFailed(), eq(variables['TEARDOWN_FLAG'], true))
-      enabled: false
 
     - task: TerraformCLI@0
       displayName: 'terraform plan'
@@ -47,6 +46,8 @@ stages:
         commandOptions: '-var "backend_service=$(TEARDOWN_SERVICE_IP)" -var "username=$(TEARDOWN_ADC_USERNAME)" -var "password=$(TEARDOWN_ADC_PASSWORD)" -var "traffic_split_percentage=$(TEARDOWN_TRAFFIC_SPLIT_PERCENTAGE)"'
         allowTelemetryCollection: false
       condition:  and(succeededOrFailed(), eq(variables['TEARDOWN_FLAG'], true))
+      enabled: false
+
 
     - task: TerraformCLI@0
       displayName: 'terraform destroy'
