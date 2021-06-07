@@ -22,7 +22,7 @@ stages:
       displayName: 'Update Pipeline variables'
       inputs:
         scriptPath: '$(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/read_setup_config.py'
-        arguments: --config_file '$(System.DefaultWorkingDirectory)/python-sample-vscode-flask-tutorial/blue-green-tf/azure_pipelines/config/setup_config.json'
+        arguments: --config_file $(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/setup_config.json
     
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
       displayName: 'Install Terraform 0.13.5'
