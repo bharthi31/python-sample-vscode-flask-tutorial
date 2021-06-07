@@ -5,6 +5,7 @@ trigger:
   paths:
     exclude:
     - blue-green-tf/green-tf/green-deployment-pipeline.yml
+    - blue-green-tf/green-tf/teardown-destroy-input-generator.py
     - blue-green-tf/green-tf/teardown-pipeline.yml
     - blue-green-tf/green-tf/teardown.json
 
