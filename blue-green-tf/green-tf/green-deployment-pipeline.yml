@@ -21,11 +21,6 @@ stages:
       inputs:
         scriptPath: '$(System.DefaultWorkingDirectory)/blue-green-tf/green-tf/terraform_input_generator.py'
         arguments: --config_file $(System.DefaultWorkingDirectory)/blue-green-tf/green-tf/config.json
-    - task: PythonScript@0
-      displayName: 'Update Pipeline variables for deleting existing config on ADC'
-      inputs:
-        scriptPath: '$(System.DefaultWorkingDirectory)/blue-green-tf/green-tf/terraform_destroy_input_generator.py'
-        arguments: --config_file $(System.DefaultWorkingDirectory)/blue-green-tf/green-tf/teardown.json
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
       inputs:
         terraformVersion: '0.13.5'
@@ -55,32 +50,3 @@ stages:
         commandOptions: '-var "backend_service=$(SERVICE_IP)" -var "username=$(ADC_USERNAME)" -var "password=$(ADC_PASSWORD)" -var "traffic_split_percentage=$(TRAFFIC_SPLIT_PERCENTAGE)"'
         allowTelemetryCollection: false
       enabled: True
-      
-    - task: TerraformCLI@0
-      inputs:
-        command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)'
-        allowTelemetryCollection: false
-        backendType: selfConfigured
-      displayName: 'terraform init'
-      condition:  and(succeededOrFailed(), eq(variables['TEARDOWN_FLAG'], true))
-
-    - task: TerraformCLI@0
-      displayName: 'terraform plan'
-      inputs:
-        command: plan
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)'
-        environmentServiceName: 'NSDev GWY CA raghul.christus@citrix.com(23b03d6f-b164-4527-9acd-595d97060283)'
-        commandOptions: '-var "backend_service=$(TEARDOWN_SERVICE_IP)" -var "username=$(ADC_USERNAME)" -var "password=$(ADC_PASSWORD)" -var "traffic_split_percentage=$(TEARDOWN_TRAFFIC_SPLIT_PERCENTAGE)"'
-        allowTelemetryCollection: false
-      condition:  and(succeededOrFailed(), eq(variables['TEARDOWN_FLAG'], true))
-
-    - task: TerraformCLI@0
-      displayName: 'terraform destroy'
-      inputs:
-        command: destroy
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)'
-        environmentServiceName: 'NSDev GWY CA raghul.christus@citrix.com(23b03d6f-b164-4527-9acd-595d97060283)'
-        commandOptions: '-var "backend_service=$(TEARDOWN_SERVICE_IP)" -var "username=nsroot" -var "password=nsroot@12345" -var "traffic_split_percentage=$(TEARDOWN_TRAFFIC_SPLIT_PERCENTAGE)"'
-        allowTelemetryCollection: false
-      condition:  and(succeededOrFailed(), eq(variables['TEARDOWN_FLAG'], true))
