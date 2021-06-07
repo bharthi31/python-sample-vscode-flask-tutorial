@@ -36,6 +36,7 @@ stages:
         backendType: selfConfigured
       displayName: 'terraform init'
       condition:  and(succeededOrFailed(), eq(variables['TEARDOWN_FLAG'], true))
+      enabled: false
 
     - task: TerraformCLI@0
       displayName: 'terraform plan'
