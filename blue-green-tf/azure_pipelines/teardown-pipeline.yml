@@ -26,14 +26,6 @@ stages:
     - task: Bash@3
       inputs:
         targetType: 'inline'
-        script: |
-          # Write your commands here
-          
-          echo 'Hello world'
-          tets
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
         script:  |
           cp $(TEARDOWN_TF_STATE_FILE) $(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)
           $(Agent.ToolDirectory)/terraform/0.13.5/x64/terraform state rm 'citrixadc_csvserver'
