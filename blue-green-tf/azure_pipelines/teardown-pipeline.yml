@@ -31,7 +31,7 @@ stages:
     - task: TerraformCLI@0
       inputs:
         command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)'
+        workingDirectory: '/agent/_work/1/s/blue-green-tf/green-tf'
         allowTelemetryCollection: false
         backendType: selfConfigured
       displayName: 'terraform init'
