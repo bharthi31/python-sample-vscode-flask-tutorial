@@ -54,7 +54,10 @@ stages:
         commandOptions: '-var "backend_service=$(SERVICE_IP)" -var "traffic_split_percentage=$(TRAFFIC_SPLIT_PERCENTAGE)"'
         allowTelemetryCollection: false
       enabled: True
-    - bash: |
-   	mkdir -p $(TERRAFORM_TFSTATE_FILE_PATH)
-  	cp $(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)/terraform.tfstate $(TERRAFORM_TFSTATE_FILE_PATH)
-  	displayName: 'Backup Terraform state file'
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          mkdir -p $(TERRAFORM_TFSTATE_FILE_PATH)
+          cp $(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)/terraform.tfstate $(TERRAFORM_TFSTATE_FILE_PATH)
+          displayName: 'Backup Terraform state file'
