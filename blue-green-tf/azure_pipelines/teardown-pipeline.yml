@@ -29,7 +29,7 @@ stages:
         script:  |
           cp $(TEARDOWN_TF_STATE_FILE) $(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)
           ls $(Agent.ToolsDirectory)
-          '$(Agent.ToolsDirectory)/terraform/0.13.5/x64/terraform state rm "citrixadc_csvserver"'
+          '$(Agent.ToolsDirectory)/terraform/0.13.5/x64/terraform state rm "citrixadc_csvserver.demo_csvserver"'
       displayName: 'Restore and exclude csvs resource deletion from Terraform state file'
       condition:  and(succeeded(), eq(variables['TEARDOWN_FLAG'], true))
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
