@@ -1,6 +1,6 @@
 {
   "TRAFFIC_SPLIT_PERCENTAGE": "100",
-  "SERVICE_IP": "20.0.0.7",
-  "TERRAFORM_TFSTATE_FILE_PATH": "/tmp/tfstates/v1",
-  "TERRAFORM_SCRIPT_PATH": "blue-green-tf/blue-tf"
+  "SERVICE_IP": "20.0.0.8",
+  "TERRAFORM_TFSTATE_FILE_PATH": "/tmp/tfstates/v2",
+  "TERRAFORM_SCRIPT_PATH": "blue-green-tf/green-tf"
 }
