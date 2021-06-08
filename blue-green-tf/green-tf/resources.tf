@@ -4,9 +4,6 @@ resource "citrixadc_csvserver" "demo_csvserver" {
   name        = "demo_csvserver"
   port        = 80
   servicetype = "HTTP"
-  lifecycle {
-    prevent_destroy = true
-  }
 
   # lbvserverbinding = citrixadc_lbvserver.greenLB.name
 }
