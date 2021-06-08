@@ -37,6 +37,14 @@ stages:
         backendType: selfConfigured
       displayName: 'terraform init'
       condition:  and(succeeded(), eq(variables['TEARDOWN_FLAG'], true))
+    
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: '$(Agent.ToolsDirectory)/terraform state rm citrixadc_csvserver'
+      displayName: 'Exclude CSVserver from terraform destroy'
+      condition:  and(succeeded(), eq(variables['TEARDOWN_FLAG'], true))
+      
     - task: TerraformCLI@0
       displayName: 'terraform destroy'
       inputs:
