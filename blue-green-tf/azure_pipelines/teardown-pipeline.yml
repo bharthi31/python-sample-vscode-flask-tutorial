@@ -27,3 +27,11 @@ stages:
       inputs:
         terraformVersion: '0.13.5'
       displayName: 'Install Terraform'
+    
+    - task: TerraformCLI@0
+      inputs:
+        command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)'
+        allowTelemetryCollection: false
+        backendType: selfConfigured
+      displayName: 'terraform init'
