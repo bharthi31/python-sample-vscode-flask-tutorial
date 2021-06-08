@@ -60,4 +60,4 @@ stages:
         script: |
           mkdir -p $(TERRAFORM_TFSTATE_FILE_PATH)
           cp $(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)/terraform.tfstate $(TERRAFORM_TFSTATE_FILE_PATH)
-          displayName: 'Backup Terraform state file'
+      displayName: 'Backup Terraform state file'
