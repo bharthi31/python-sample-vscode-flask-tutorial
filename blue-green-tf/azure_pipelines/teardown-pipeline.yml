@@ -27,6 +27,7 @@ stages:
       inputs:
         targetType: 'inline'
         script:  |
+          cd $(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)
           cp $(TEARDOWN_TF_STATE_FILE) $(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)
           ls $(Agent.ToolsDirectory)
           '$(Agent.ToolsDirectory)/terraform/0.13.5/x64/terraform' version
