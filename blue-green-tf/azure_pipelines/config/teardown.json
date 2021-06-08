@@ -1,2 +1,6 @@
 {
+  "TRAFFIC_SPLIT_PERCENTAGE": "100",
+  "SERVICE_IP": "20.0.0.8",
+  "TERRAFORM_SCRIPT_PATH": "blue-green-tf/blue-tf",
+  "TF_STATE_FILE": "/tmp/tfstates/v1/terraform.tfstate"
 }
