@@ -54,6 +54,6 @@ stages:
         command: destroy
         workingDirectory: '$(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)'
         environmentServiceName: 'NSDev GWY CA raghul.christus@citrix.com(23b03d6f-b164-4527-9acd-595d97060283)'
-        commandOptions: '-var "backend_service=$(TEARDOWN_SERVICE_IP)" -var "traffic_split_percentage=$(TEARDOWN_TRAFFIC_SPLIT_PERCENTAGE)"'
+        commandOptions: '-var "backend_service=$(TEARDOWN_ENDPOINT_IP)" -var "traffic_split_percentage=$(TEARDOWN_TRAFFIC_SPLIT_PERCENTAGE)"'
         allowTelemetryCollection: false
       condition:  and(succeeded(), eq(variables['TEARDOWN_FLAG'], true))
