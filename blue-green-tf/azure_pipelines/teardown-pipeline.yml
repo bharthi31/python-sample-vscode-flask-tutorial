@@ -28,7 +28,7 @@ stages:
         targetType: 'inline'
         script:  |
           cd $(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)
-          cp $(TERRAFORM_TFSTATE_FILE_PATH) $(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)
+          cp $(TERRAFORM_TFSTATE_FILE_PATH)/terraform.tfstate $(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)
           ls $(Agent.ToolsDirectory)
           '$(Agent.ToolsDirectory)/terraform/0.13.5/x64/terraform' version
           '$(Agent.ToolsDirectory)/terraform/0.13.5/x64/terraform' state rm "citrixadc_csvserver.demo_csvserver"
