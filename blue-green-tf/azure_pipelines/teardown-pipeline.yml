@@ -22,7 +22,7 @@ stages:
       displayName: 'Update Pipeline variables for deleting existing config on ADC'
       inputs:
         scriptPath: '$(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/read_config.py'
-        arguments: --config_file $(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/teardown.json --action 'delete'
+        arguments: --config_file $(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/teardown.json --action delete
     - task: Bash@3
       inputs:
         targetType: 'inline'

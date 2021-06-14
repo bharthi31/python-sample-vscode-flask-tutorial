@@ -5,10 +5,12 @@ import json
 class TerraformInputGenerator(object):
     @staticmethod
     def populate_env(input_params):
+        print(input_params)
         if input_params.action == 'delete':
             print('##vso[task.setvariable variable=TEARDOWN_FLAG]True')
         with open(input_params.config_file) as json_file:
             json_data = json.load(json_file)
+            print(json_data)
             if json_data.keys():
                 for param, value in json_data.iteritems():
                     print('##vso[task.setvariable variable={}]{}'.format(param, value))
