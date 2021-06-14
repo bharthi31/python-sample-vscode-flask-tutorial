@@ -21,14 +21,14 @@ stages:
     - task: PythonScript@0
       displayName: 'Update Pipeline variables for deleting existing config on ADC'
       inputs:
-        scriptPath: '$(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/read_teardown_config.py'
-        arguments: --config_file $(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/teardown.json
+        scriptPath: '$(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/read_config.py'
+        arguments: --config_file $(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/teardown.json --action 'delete'
     - task: Bash@3
       inputs:
         targetType: 'inline'
         script:  |
-          cd $(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)
-          cp $(TEARDOWN_TF_STATE_FILE) $(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)
+          cd $(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)
+          cp $(TF_STATE_FILE) $(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)
           ls $(Agent.ToolsDirectory)
           '$(Agent.ToolsDirectory)/terraform/0.13.5/x64/terraform' version
           '$(Agent.ToolsDirectory)/terraform/0.13.5/x64/terraform' state rm "citrixadc_csvserver.demo_csvserver"
@@ -42,7 +42,7 @@ stages:
     - task: TerraformCLI@0
       inputs:
         command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)'
         allowTelemetryCollection: false
         backendType: selfConfigured
       displayName: 'terraform init'
@@ -52,8 +52,8 @@ stages:
       displayName: 'terraform destroy'
       inputs:
         command: destroy
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(TEARDOWN_TERRAFORM_SCRIPT_PATH)'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)'
         environmentServiceName: 'NSDev GWY CA raghul.christus@citrix.com(23b03d6f-b164-4527-9acd-595d97060283)'
-        commandOptions: '-var "backend_service=$(TEARDOWN_ENDPOINT_IP)" -var "traffic_split_percentage=$(TEARDOWN_TRAFFIC_SPLIT_PERCENTAGE)"'
+        commandOptions: '-var "backend_service=$(ENDPOINT_IP)" -var "traffic_split_percentage=$(TRAFFIC_SPLIT_PERCENTAGE)"'
         allowTelemetryCollection: false
       condition:  and(succeeded(), eq(variables['TEARDOWN_FLAG'], true))
