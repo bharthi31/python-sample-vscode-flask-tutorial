@@ -11,7 +11,7 @@ class TerraformInputGenerator(object):
             json_data = json.load(json_file)
             if json_data.keys():
                 for param, value in json_data.iteritems():
-                    print('##vso[task.setvariable variable=TEARDOWN_{}]{}'.format(param, value))
+                    print('##vso[task.setvariable variable={}]{}'.format(param, value))
 
 
 def main(input_params):
