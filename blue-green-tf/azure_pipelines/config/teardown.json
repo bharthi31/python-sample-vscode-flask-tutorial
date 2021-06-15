@@ -1,5 +1,5 @@
 {
   "TRAFFIC_SPLIT_PERCENTAGE": "100",
-  "ENDPOINT_IP": "20.0.0.7",
-  "TERRAFORM_SCRIPT_PATH": "blue-green-tf/blue-tf"
+  "ENDPOINT_IP": "20.0.0.8",
+  "TERRAFORM_SCRIPT_PATH": "blue-green-tf/green-tf"
 }
