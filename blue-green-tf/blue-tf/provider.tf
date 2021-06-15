@@ -1,4 +1,7 @@
 terraform {
+  backend "loccal" {
+    path = "/tmp/tfstates/v1/terraform.tfstate"
+  }
   required_providers {
     citrixadc = {
       source = "citrix/citrixadc"
