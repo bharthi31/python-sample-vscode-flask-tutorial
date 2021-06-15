@@ -23,14 +23,7 @@ stages:
       inputs:
         scriptPath: '$(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/read_config.py'
         arguments: --config_file $(System.DefaultWorkingDirectory)/blue-green-tf/azure_pipelines/config/teardown.json --action delete
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script:  |
-          cd $(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)
-          '$(Agent.ToolsDirectory)/terraform/0.13.5/x64/terraform' state rm "citrixadc_csvserver.demo_csvserver"
-      displayName: 'Exclude csvs resource deletion from Terraform state file'
-      condition:  and(succeeded(), eq(variables['TEARDOWN_FLAG'], true))
+    
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
       inputs:
         terraformVersion: '0.13.5'
@@ -45,6 +38,14 @@ stages:
       displayName: 'terraform init'
       condition:  and(succeeded(), eq(variables['TEARDOWN_FLAG'], true))
 
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script:  |
+          cd $(System.DefaultWorkingDirectory)/$(TERRAFORM_SCRIPT_PATH)
+          '$(Agent.ToolsDirectory)/terraform/0.13.5/x64/terraform' state rm "citrixadc_csvserver.demo_csvserver"
+      displayName: 'Exclude csvs resource deletion from Terraform state file'
+      condition:  and(succeeded(), eq(variables['TEARDOWN_FLAG'], true))
     - task: TerraformCLI@0
       displayName: 'terraform destroy'
       inputs:
