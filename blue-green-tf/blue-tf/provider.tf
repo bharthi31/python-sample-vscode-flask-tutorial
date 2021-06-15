@@ -1,5 +1,5 @@
 terraform {
-  backend "loccal" {
+  backend "local" {
     path = "/tmp/tfstates/v1/terraform.tfstate"
   }
   required_providers {
